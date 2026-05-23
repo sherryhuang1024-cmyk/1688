@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<title>跨境童装利润计算器 - 免费工具</title>
+<meta name="description" content="免费跨境童装利润计算器。输入售价→自动算FBA费+佣金+进货成本→净利润。源头工厂直供，比1688代发还便宜。">
+<style>body{font-family:Arial;max-width:600px;margin:40px auto;padding:20px}
+input,select{padding:8px;margin:5px 0;width:100%;box-sizing:border-box}
+.result{background:#f0f9f0;padding:15px;margin:10px 0;border-radius:5px}
+.cta{background:#ff6600;color:#fff;padding:15px;text-align:center;margin:20px 0;border-radius:5px}
+</style></head><body>
+<h1>跨境童装利润计算器</h1>
+<p>帮你算清楚每件童装赚多少钱</p>
+<label>售价 (USD):</label><input type="number" id="price" value="15.99" oninput="calc()">
+<label>平台:</label><select id="platform" onchange="calc()">
+<option value="amazon">Amazon (佣金15%+FBA$4.5)</option>
+<option value="temu">Temu (全托管)</option>
+<option value="shein">Shein (佣金10%)</option>
+<option value="shopify">Shopify (佣金2%)</option>
+</select>
+<div class="result" id="result">
+售价 $15.99 → FBA费$4.50 → 佣金$2.40 → <b>工厂进货</b>$2.00 → <b>净利润 $7.09 (44%)</b>
+</div>
+<div class="cta">
+<b>想要更低的工厂价？</b><br>
+中山1000m²童装工厂直供 | 儿童内裤$0.30起 | 打底衫$1.20起<br>
+<a href="https://shop2669750515e84.1688.com/" style="color:#fff;font-size:18px">查看工厂价目表 →</a>
+</div>
+<script>
+function calc(){
+let p=parseFloat(document.getElementById('price').value)||15.99;
+let plat=document.getElementById('platform').value;
+let fee=plat=='amazon'?6.90:plat=='temu'?3.00:plat=='shein'?1.60:0.32;
+let factory=2.00; let profit=p-fee-factory;
+document.getElementById('result').innerHTML='售价 $'+p.toFixed(2)+' → 平台费$'+fee.toFixed(2)+' → <b>工厂进货</b>$'+factory.toFixed(2)+' → <b>净利润 $'+profit.toFixed(2)+' ('+(profit/p*100).toFixed(0)+'%)</b>';
+}
+</script></body></html>
